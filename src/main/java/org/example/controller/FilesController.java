@@ -14,17 +14,17 @@ public class FilesController {
         this.filesService = filesService;
     }
 
-    @GetMapping("/files/info/{oldFileName}/{newFileName}")
+    @GetMapping("/files/rename/{oldFileName}/{newFileName}")
     public ResponseEntity<String> rename(@PathVariable("newFileName") String newFileName, @PathVariable("oldFileName") String oldFileName) {
         return ResponseEntity.ok(filesService.rename(oldFileName, newFileName));
     }
 
-    @GetMapping("/files/info/{oldBucketName}/{fileName}/{newBucketName}")
+    @GetMapping("/files/replace/{oldBucketName}/{fileName}/{newBucketName}")
     public ResponseEntity<String> replace(@PathVariable("newBucketName") String newBucketName, @PathVariable("fileName") String FileName, @PathVariable("oldBucketName") String oldBucketName) {
         return ResponseEntity.ok(filesService.replace(FileName, oldBucketName, newBucketName));
     }
 
-    @GetMapping("/files/info/{fileName}")
+    @GetMapping("/files/delite/{fileName}")
     public ResponseEntity<String> delite(@PathVariable("fileName") String FileName) {
         return ResponseEntity.ok(filesService.delite(FileName));
     }
